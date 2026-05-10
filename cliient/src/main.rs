@@ -6,8 +6,9 @@ fn main() {
     println!("введите ip сервера в формате ");
     let mut servip = String::new();
     io::stdin().read_line(&mut servip).expect("bad");
+    let servip = servip.trim();
     loop {
-        let mut stream = TcpStream::connect("{}:4444", servip).unwrap();
+        let mut stream = TcpStream::connect(format!("{}:4444", servip)).unwrap();
         let mut unput = String::new();
         println!("введите текст");
         io::stdin().read_line(&mut unput).expect("bad");
